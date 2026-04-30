@@ -1,12 +1,12 @@
-import { Zap, Shield, Layers, BarChart3, Globe2, Sparkles } from "lucide-react";
+import { Code2, Megaphone, Network, GraduationCap, Building2, Lightbulb } from "lucide-react";
 
 const features = [
-  { icon: Zap, title: "Lightning fast", desc: "Optimized from the ground up for speed. Pages load in under a second, every time." },
-  { icon: Shield, title: "Secure by default", desc: "Enterprise-grade security with end-to-end encryption and SOC 2 compliance." },
-  { icon: Layers, title: "Composable", desc: "Mix and match modules to build exactly the workflow your team needs." },
-  { icon: BarChart3, title: "Real-time insights", desc: "Beautiful dashboards that turn raw data into clear, actionable signals." },
-  { icon: Globe2, title: "Global scale", desc: "Deploy to 30+ regions with automatic failover and edge caching included." },
-  { icon: Sparkles, title: "Delightful UX", desc: "Crafted with care so your team actually enjoys using it every single day." },
+  { icon: Code2, title: "Software Development", desc: "Custom websites, web apps, and mobile solutions built for businesses across Nigeria." },
+  { icon: Lightbulb, title: "IT Consulting", desc: "Strategy, systems and infrastructure advice from a team that's shipped real products." },
+  { icon: GraduationCap, title: "Skills Training", desc: "Hands-on coding, digital marketing, networking and CCTV installation programs." },
+  { icon: Megaphone, title: "Digital Marketing", desc: "Grow your reach with social, SEO and paid campaigns crafted for African audiences." },
+  { icon: Network, title: "Networking & CCTV", desc: "Professional setup of computer networks and security camera systems." },
+  { icon: Building2, title: "Coworking Space", desc: "Stable power, fast WiFi and air conditioning — a place to focus and connect." },
 ];
 
 export const Features = () => {
@@ -14,12 +14,12 @@ export const Features = () => {
     <section id="features" className="py-24 md:py-32">
       <div className="container-tight">
         <div className="max-w-2xl mx-auto text-center mb-16">
-          <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">Features</p>
+          <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">What we do</p>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-            Everything you need, nothing you don't.
+            One hub. Every digital need.
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            A focused toolkit designed to help small teams move like big ones.
+            From learning your first line of code to launching a national brand — we're here for it.
           </p>
         </div>
 

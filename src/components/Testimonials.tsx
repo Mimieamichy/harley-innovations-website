@@ -1,29 +1,29 @@
 const items = [
   {
-    quote: "Harley replaced four tools and made our team 2x faster. The design alone is worth it.",
-    name: "Amelia Chen",
-    role: "Head of Product, Northwind",
+    quote: "Harley's coding bootcamp gave me real skills. I built my first web app in three months — life-changing.",
+    name: "Ibrahim Musa",
+    role: "Web Developer, Lafia",
   },
   {
-    quote: "The most thoughtful product I've used in years. Every detail just feels right.",
-    name: "Marcus Reid",
-    role: "Engineering Lead, Lumen",
+    quote: "We hired Harley to build our company website and handle marketing. Professional, fast and reliable.",
+    name: "Chika Eze",
+    role: "Founder, Greenfield Agro",
   },
   {
-    quote: "Beautiful, fast, and reliable. Our whole org switched within a month.",
-    name: "Priya Natarajan",
-    role: "COO, Fieldwork",
+    quote: "The coworking space is a gem in Nasarawa. Stable power, great WiFi and an inspiring community.",
+    name: "Halima Yusuf",
+    role: "Freelance Designer",
   },
 ];
 
 export const Testimonials = () => {
   return (
-    <section id="testimonials" className="py-24 md:py-32">
+    <section id="testimonials" className="py-24 md:py-32 bg-gradient-soft">
       <div className="container-tight">
         <div className="max-w-2xl mx-auto text-center mb-16">
           <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">Testimonials</p>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-            Loved by modern teams.
+            Trusted by our community.
           </h2>
         </div>
 
