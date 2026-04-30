@@ -31,9 +31,9 @@ export const Navbar = () => {
       }`}
     >
       <nav className="container-tight flex items-center justify-between h-16">
-        <a href="#top" className="flex items-center gap-2">
-          <img src={logo} alt="Harley Innovation Hub logo" className="h-8 w-8" />
-          <span className="font-bold text-lg tracking-tight">Harley</span>
+        <a href="#top" className="flex items-center gap-3">
+          <img src={logo} alt="Harley Innovation Hub logo" className="h-12 w-12 md:h-14 md:w-14" />
+          <span className="font-bold text-lg md:text-xl tracking-tight">Harley Innovation Hub</span>
         </a>
 
         <ul className="hidden md:flex items-center gap-8">
@@ -50,8 +50,9 @@ export const Navbar = () => {
         </ul>
 
         <div className="hidden md:flex items-center gap-3">
-          <Button variant="ghost" size="sm">Sign in</Button>
-          <Button variant="hero" size="sm">Get started</Button>
+          <Button variant="hero" size="sm" asChild>
+            <a href="#contact">Get started</a>
+          </Button>
         </div>
 
         <button
