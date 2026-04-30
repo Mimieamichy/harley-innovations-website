@@ -1,10 +1,10 @@
-import { Github, Twitter, Linkedin } from "lucide-react";
+import { Facebook, Twitter, Linkedin, MapPin, Phone, Mail } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const cols = [
-  { title: "Product", links: ["Features", "Pricing", "Changelog", "Roadmap"] },
-  { title: "Company", links: ["About", "Customers", "Careers", "Contact"] },
-  { title: "Resources", links: ["Docs", "Guides", "Blog", "Support"] },
+  { title: "Services", links: ["Software Development", "IT Consulting", "Digital Marketing", "CCTV Installation"] },
+  { title: "Hub", links: ["Coworking Space", "Training", "Events", "Our Team"] },
+  { title: "Company", links: ["About", "Products", "Testimonials", "Contact"] },
 ];
 
 export const Footer = () => {
@@ -14,14 +14,19 @@ export const Footer = () => {
         <div className="grid md:grid-cols-5 gap-10">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2">
-              <img src={logo} alt="Harley logo" className="h-8 w-8" />
-              <span className="font-bold text-lg">Harley</span>
+              <img src={logo} alt="Harley Innovation Hub logo" className="h-8 w-8" />
+              <span className="font-bold text-lg">Harley Innovation Hub</span>
             </div>
             <p className="mt-4 text-sm text-muted-foreground max-w-xs leading-relaxed">
-              The modern platform for teams that build with intention.
+              Lafia's home for technology, training and innovation.
             </p>
+            <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2"><MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" /> Opposite Eco Bank, Jos Road, Lafia</li>
+              <li className="flex items-center gap-2"><Phone className="h-4 w-4 flex-shrink-0" /> +234 704 130 5874</li>
+              <li className="flex items-center gap-2"><Mail className="h-4 w-4 flex-shrink-0" /> info@harley.com.ng</li>
+            </ul>
             <div className="mt-6 flex items-center gap-3">
-              {[Twitter, Github, Linkedin].map((Icon, i) => (
+              {[Facebook, Twitter, Linkedin].map((Icon, i) => (
                 <a
                   key={i}
                   href="#"
@@ -49,7 +54,7 @@ export const Footer = () => {
         </div>
 
         <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Harley. All rights reserved.</p>
+          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Harley Innovation Hub. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="text-xs text-muted-foreground hover:text-foreground">Privacy</a>
             <a href="#" className="text-xs text-muted-foreground hover:text-foreground">Terms</a>

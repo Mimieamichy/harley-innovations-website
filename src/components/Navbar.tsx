@@ -4,9 +4,10 @@ import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
 
 const links = [
-  { href: "#features", label: "Features" },
+  { href: "#features", label: "Services" },
+  { href: "#products", label: "Products" },
   { href: "#about", label: "About" },
-  { href: "#testimonials", label: "Testimonials" },
+  { href: "#team", label: "Team" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -31,7 +32,7 @@ export const Navbar = () => {
     >
       <nav className="container-tight flex items-center justify-between h-16">
         <a href="#top" className="flex items-center gap-2">
-          <img src={logo} alt="Harley logo" className="h-8 w-8" />
+          <img src={logo} alt="Harley Innovation Hub logo" className="h-8 w-8" />
           <span className="font-bold text-lg tracking-tight">Harley</span>
         </a>
 
