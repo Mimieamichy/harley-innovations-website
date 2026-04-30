@@ -13,8 +13,8 @@ export const Footer = () => {
       <div className="container-tight py-16">
         <div className="grid md:grid-cols-5 gap-10">
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2">
-              <img src={logo} alt="Harley Innovation Hub logo" className="h-8 w-8" />
+            <div className="flex items-center gap-3">
+              <img src={logo} alt="Harley Innovation Hub logo" className="h-12 w-12" />
               <span className="font-bold text-lg">Harley Innovation Hub</span>
             </div>
             <p className="mt-4 text-sm text-muted-foreground max-w-xs leading-relaxed">
