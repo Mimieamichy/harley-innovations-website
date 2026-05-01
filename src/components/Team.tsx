@@ -1,16 +1,18 @@
-import { Linkedin, Twitter } from "lucide-react";
+import { Linkedin, Twitter, Github } from "lucide-react";
 import t1 from "@/assets/team-real-2.jpg";
 import t2 from "@/assets/team-real-4.jpg";
 import t3 from "@/assets/team-real-1.jpg";
 import t4 from "@/assets/team-real-3.jpg";
 import t5 from "@/assets/team-real-5.jpg";
+import t6 from "@/assets/team-real-6.png";
 
 const team = [
-  { img: t1, name: "Team Member", role: "Role" },
   { img: t2, name: "Team Member", role: "Role" },
+  { img: t1, name: "Team Member", role: "Role" },
   { img: t3, name: "Team Member", role: "Role" },
   { img: t4, name: "Team Member", role: "Role" },
   { img: t5, name: "Team Member", role: "Role" },
+  { img: t6, name: "Team Member", role: "Role" }, 
 ];
 
 export const Team = () => {
@@ -50,8 +52,11 @@ export const Team = () => {
                   <a href="#" aria-label={`${m.name} LinkedIn`} className="h-8 w-8 rounded-md border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-colors">
                     <Linkedin className="h-3.5 w-3.5" />
                   </a>
-                  <a href="#" aria-label={`${m.name} Twitter`} className="h-8 w-8 rounded-md border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-colors">
+                  <a href="#" aria-label={`${m.name} X`} className="h-8 w-8 rounded-md border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-colors">
                     <Twitter className="h-3.5 w-3.5" />
+                  </a>
+                  <a href="#" aria-label={`${m.name} Github`} className="h-8 w-8 rounded-md border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-colors">
+                    <Github className="h-3.5 w-3.5" />
                   </a>
                 </div>
               </div>

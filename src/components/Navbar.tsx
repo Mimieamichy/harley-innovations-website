@@ -1,17 +1,27 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { 
+  Home, 
+  Briefcase, 
+  Package, 
+  MessageSquare, 
+  Info, 
+  Phone, 
+  Megaphone,
+  Users,
+  ExternalLink
+} from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const links = [
-  { href: "#features", label: "Services" },
-  { href: "#products", label: "Products" },
-  { href: "#about", label: "About" },
-  { href: "#team", label: "Team" },
-  { href: "#contact", label: "Contact" },
+  { href: "#features", label: "Services", icon: Briefcase },
+  { href: "#products", label: "Products", icon: Package },
+  { href: "#about", label: "About", icon: Info },
+  { href: "#team", label: "Team", icon: Users },
+  { href: "#testimonials", label: "Reviews", icon: MessageSquare },
+  { href: "#contact", label: "Contact", icon: Phone },
 ];
 
 export const Navbar = () => {
-  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -22,58 +32,80 @@ export const Navbar = () => {
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-background/80 backdrop-blur-md border-b border-border shadow-sm"
-          : "bg-transparent"
-      }`}
-    >
-      <nav className="container-tight flex items-center justify-between h-16">
-        <a href="#top" className="flex items-center gap-1.5">
-          <img src={logo} alt="Harley Innovation Hub logo" className="h-12 w-12 md:h-14 md:w-14 object-contain" />
-          <span className="font-bold text-lg md:text-xl tracking-tight">Harley Innovation Hub</span>
-        </a>
+    <>
+      {/* Advert/Announcement Banner */}
+      <div className="fixed top-0 inset-x-0 bg-primary text-primary-foreground py-2 px-4 text-center text-[10px] sm:text-xs md:text-sm font-medium z-[60] h-9 flex items-center justify-center">
+        <div className="container-tight flex items-center justify-center gap-2">
+          <Megaphone className="h-3 w-3 md:h-4 md:w-4 animate-pulse shrink-0" />
+          <span className="truncate">Now enrolling: SIWES & Internship Programs 2026!</span>
+          <a 
+            href="https://wa.me/2347041305874" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="underline flex items-center gap-1 hover:text-white transition-colors shrink-0"
+          >
+            Apply Here <ExternalLink className="h-3 w-3" />
+          </a>
+        </div>
+      </div>
 
-        <ul className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {l.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+      <header
+        className={`fixed top-9 inset-x-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-background/80 backdrop-blur-md border-b border-border shadow-sm"
+            : "bg-transparent"
+        }`}
+      >
+        <nav className="container-tight flex items-center justify-between h-14 md:h-16">
+          <a href="#top" className="flex items-center gap-1.5">
+            <img src={logo} alt="Harley Innovation Hub logo" className="h-8 w-8 md:h-12 md:w-12 object-contain" />
+            <span className="font-bold text-base md:text-xl tracking-tight">Harley Innovation Hub</span>
+          </a>
 
-        <button
-          className="md:hidden p-2 -mr-2 text-foreground"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
-      </nav>
-
-      {open && (
-        <div className="md:hidden bg-background border-t border-border">
-          <ul className="container-tight py-4 space-y-3">
+          {/* Desktop Navigation */}
+          <ul className="hidden md:flex items-center gap-8">
             {links.map((l) => (
               <li key={l.href}>
                 <a
                   href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="block py-2 text-sm font-medium text-foreground"
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {l.label}
                 </a>
               </li>
             ))}
           </ul>
-        </div>
-      )}
-    </header>
+          
+          <div className="md:hidden">
+            <a 
+              href="#contact" 
+              className="text-[10px] font-bold bg-primary text-primary-foreground px-3 py-1.5 rounded-full uppercase tracking-wider"
+            >
+              Contact
+            </a>
+          </div>
+        </nav>
+      </header>
+
+      {/* Mobile Bottom Navigation */}
+      <nav className="md:hidden fixed bottom-0 inset-x-0 bg-background/95 backdrop-blur-md border-t border-border z-50 pb-2">
+        <ul className="flex items-center justify-around h-14">
+          <li>
+            <a href="#top" className="flex flex-col items-center gap-1 px-2 text-muted-foreground hover:text-primary transition-colors">
+              <Home className="h-4 w-4" />
+              <span className="text-[9px] font-bold uppercase tracking-tighter">Home</span>
+            </a>
+          </li>
+          {links.filter(l => ["Services", "Products", "Reviews", "About"].includes(l.label)).map((l) => (
+            <li key={l.href}>
+              <a href={l.href} className="flex flex-col items-center gap-1 px-2 text-muted-foreground hover:text-primary transition-colors">
+                <l.icon className="h-4 w-4" />
+                <span className="text-[9px] font-bold uppercase tracking-tighter">{l.label}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </>
   );
 };

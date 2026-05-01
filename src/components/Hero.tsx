@@ -1,8 +1,77 @@
+import * as React from "react";
 import { ArrowRight, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImg from "@/assets/hero-workspace.jpg";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import heroImg1 from "@/assets/JAY_0001.jpg";
+import heroImg2 from "@/assets/JAY_0010.jpg";
+import heroImg3 from "@/assets/JAY_0032.jpg";
+import heroImg4 from "@/assets/JAY_9772.jpg";
+import heroImg5 from "@/assets/JAY_9760.jpg";
+import heroImg7 from "@/assets/JAY_9788 (1).jpg";
+import heroImg8 from "@/assets/JAY_9916.jpg";
+import heroImg9 from "@/assets/JAY_9917.jpg";
+import heroImg10 from "@/assets/JAY_9997.jpg";
+import heroImg11 from "@/assets/JAY_9998.jpg";
+import productCoworking from "@/assets/product-coworking.jpg";
+import productSoftware from "@/assets/product-software.jpg";
+import productTraining from "@/assets/product-training.jpg";
+
+const carouselImages = [
+  {
+    src: heroImg1,
+    alt: "Harley Innovation Hub coworking space",
+  },
+  {
+    src: heroImg2,
+    alt: "Collaborative workspace at Harley Hub",
+  },
+  {
+    src: heroImg3,
+    alt: "Software development team in action",
+  },
+  {
+    src: heroImg4,
+    alt: "Digital skills training session",
+  },
+  {
+    src: heroImg5,
+    alt: "Harley Innovation Hub coworking space",
+  },
+  {
+    src: heroImg7,
+    alt: "Collaborative workspace at Harley Hub",
+  },
+  {
+    src: heroImg8,
+    alt: "Software development team in action",
+  },
+  {
+    src: heroImg9,
+    alt: "Digital skills training session",
+  },
+  {
+    src: heroImg10,
+    alt: "Harley Innovation Hub coworking space",
+  },
+  {
+    src: heroImg11,
+    alt: "Collaborative workspace at Harley Hub",
+  },
+  
+];
 
 export const Hero = () => {
+  const plugin = React.useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: true })
+  );
+
   return (
     <section id="top" className="relative pt-32 pb-24 md:pt-44 md:pb-32 overflow-hidden bg-gradient-hero">
       <div className="container-tight relative">
@@ -40,17 +109,37 @@ export const Hero = () => {
           </p>
         </div>
 
-        <div className="mt-20 relative max-w-5xl mx-auto">
-          <div className="aspect-[16/9] rounded-2xl border border-border shadow-glow overflow-hidden">
-            <img
-              src={heroImg}
-              alt="Harley Innovation Hub coworking space"
-              width={1600}
-              height={900}
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="absolute -inset-x-8 -bottom-4 h-12 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+        <div className="mt-20 relative max-w-5xl mx-auto px-4 sm:px-12 md:px-0">
+          <Carousel
+            plugins={[plugin.current]}
+            className="w-full"
+            onMouseEnter={plugin.current.stop}
+            onMouseLeave={plugin.current.reset}
+            opts={{
+              loop: true,
+            }}
+          >
+            <CarouselContent>
+              {carouselImages.map((image, index) => (
+                <CarouselItem key={index}>
+                  <div className="aspect-[16/9] rounded-2xl border border-border shadow-glow overflow-hidden">
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      width={1600}
+                      height={900}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="hidden sm:block">
+              <CarouselPrevious className="-left-12" />
+              <CarouselNext className="-right-12" />
+            </div>
+          </Carousel>
+          <div className="absolute -inset-x-8 -bottom-4 h-12 bg-gradient-to-t from-background to-transparent pointer-events-none z-10" />
         </div>
       </div>
     </section>
