@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { 
   Home, 
   Briefcase, 
@@ -23,38 +23,63 @@ const links = [
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const bannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+
+    const updateBannerHeight = () => {
+      if (bannerRef.current) {
+        document.documentElement.style.setProperty(
+          "--banner-height",
+          `${bannerRef.current.offsetHeight}px`
+        );
+      }
+    };
+
+    updateBannerHeight();
+    window.addEventListener("resize", updateBannerHeight);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", updateBannerHeight);
+    };
   }, []);
 
   return (
     <>
       {/* Advert/Announcement Banner */}
-      <div className="fixed top-0 inset-x-0 bg-primary text-primary-foreground py-2 px-4 text-center text-[10px] sm:text-xs md:text-sm font-medium z-[60] h-9 flex items-center justify-center">
-        <div className="container-tight flex items-center justify-center gap-2">
-          <Megaphone className="h-3 w-3 md:h-4 md:w-4 animate-pulse shrink-0" />
-          <span className="truncate">Now enrolling: SIWES & Internship Programs 2026!</span>
+      <div 
+        ref={bannerRef}
+        className="fixed top-0 inset-x-0 bg-primary text-primary-foreground py-2 px-4 text-center z-[60] min-h-9 flex items-center justify-center"
+      >
+        <div className="container-tight flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+          <div className="flex items-center gap-2">
+            <Megaphone className="h-3 w-3 md:h-4 md:w-4 animate-pulse shrink-0" />
+            <span className="text-[10px] sm:text-xs md:text-sm font-medium">
+              Now enrolling: SIWES & Internship Programs 2026!
+            </span>
+          </div>
           <a 
             href="https://wa.me/2347041305874" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="underline flex items-center gap-1 hover:text-white transition-colors shrink-0"
+            className="text-[10px] sm:text-xs md:text-sm font-bold underline flex items-center gap-1 hover:text-white transition-colors shrink-0"
           >
-            Apply Here <ExternalLink className="h-3 w-3" />
+            Apply Now! <ExternalLink className="h-3 w-3" />
           </a>
         </div>
       </div>
 
       <header
-        className={`fixed top-9 inset-x-0 z-50 transition-all duration-300 ${
+        className={`fixed inset-x-0 z-50 transition-all duration-300 ${
           scrolled
             ? "bg-background/80 backdrop-blur-md border-b border-border shadow-sm"
             : "bg-transparent"
         }`}
+        style={{ top: 'var(--banner-height, 36px)' }}
       >
         <nav className="container-tight flex items-center justify-between h-14 md:h-16">
           <a href="#top" className="flex items-center gap-1.5">
