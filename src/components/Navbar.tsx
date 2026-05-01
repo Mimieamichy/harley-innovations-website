@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const links = [
-  { to: "/services", label: "Services" },
-  { to: "/products", label: "Products" },
-  { to: "/about", label: "About" },
-  { to: "/team", label: "Team" },
-  { to: "/contact", label: "Contact" },
+  { href: "#features", label: "Services" },
+  { href: "#products", label: "Products" },
+  { href: "#about", label: "About" },
+  { href: "#team", label: "Team" },
+  { href: "#contact", label: "Contact" },
 ];
 
 export const Navbar = () => {
