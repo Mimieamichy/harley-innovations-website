@@ -39,23 +39,24 @@ Harley Innovation Hub is a vibrant ecosystem in Lafia, Nasarawa State, Nigeria, 
 
 ### Prerequisites
 
-- [Bun](https://bun.sh/) or [Node.js](https://nodejs.org/)
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- npm (comes with Node.js)
 
 ### Getting Started
 
 1. Clone the repository
 2. Install dependencies:
    ```bash
-   bun install
+   npm install
    ```
 3. Start the development server:
    ```bash
-   bun dev
+   npm run dev
    ```
 
 ### Scripts
 
-- `bun dev`: Starts the Vite development server.
-- `bun build`: Builds the project for production.
-- `bun lint`: Runs ESLint to check for code quality issues.
-- `bun test`: Runs unit tests using Vitest.
+- `npm run dev`: Starts the Vite development server.
+- `npm run build`: Builds the project for production.
+- `npm run lint`: Runs ESLint to check for code quality issues.
+- `npm run test`: Runs unit tests using Vitest.
