@@ -30,8 +30,8 @@ export const Navbar = () => {
       }`}
     >
       <nav className="container-tight flex items-center justify-between h-16">
-        <a href="#top" className="flex items-center gap-3">
-          <img src={logo} alt="Harley Innovation Hub logo" className="h-12 w-12 md:h-14 md:w-14" />
+        <a href="#top" className="flex items-center gap-1.5">
+          <img src={logo} alt="Harley Innovation Hub logo" className="h-12 w-12 md:h-14 md:w-14 object-contain" />
           <span className="font-bold text-lg md:text-xl tracking-tight">Harley Innovation Hub</span>
         </a>
 
