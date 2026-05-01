@@ -1,14 +1,14 @@
 import { Linkedin, Twitter } from "lucide-react";
-import t1 from "@/assets/team-1.jpg";
-import t2 from "@/assets/team-2.jpg";
-import t3 from "@/assets/team-3.jpg";
-import t4 from "@/assets/team-4.jpg";
+import t1 from "@/assets/team-real-2.jpg";
+import t2 from "@/assets/team-real-4.jpg";
+import t3 from "@/assets/team-real-1.jpg";
+import t4 from "@/assets/team-real-3.jpg";
 
 const team = [
-  { img: t1, name: "Daniel Adamu", role: "Founder & CEO" },
-  { img: t2, name: "Grace Ibrahim", role: "Lead Software Engineer" },
-  { img: t3, name: "Samuel Okoye", role: "Head of Digital Marketing" },
-  { img: t4, name: "Aisha Bello", role: "Training Lead" },
+  { img: t1, name: "Team Member", role: "Role" },
+  { img: t2, name: "Team Member", role: "Role" },
+  { img: t3, name: "Team Member", role: "Role" },
+  { img: t4, name: "Team Member", role: "Role" },
 ];
 
 export const Team = () => {
