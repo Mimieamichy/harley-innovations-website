@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -94,13 +95,13 @@ export const Hero = () => {
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Button variant="hero" size="lg" className="group" asChild>
-              <a href="#products">
+              <Link to="/products">
                 See our products
                 <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </a>
+              </Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <a href="#team">Meet the team</a>
+              <Link to="/team">Meet the team</Link>
             </Button>
           </div>
 

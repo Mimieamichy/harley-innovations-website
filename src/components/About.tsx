@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Check } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Check, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Carousel,
@@ -9,38 +10,68 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import coworking from "@/assets/product-coworking.jpg";
-import productSoftware from "@/assets/product-software.jpg";
-import productTraining from "@/assets/product-training.jpg";
-import heroImg from "@/assets/hero-workspace.jpg";
+import heroImg1 from "@/assets/JAY_0001.jpg";
+import heroImg2 from "@/assets/JAY_0010.jpg";
+import heroImg3 from "@/assets/JAY_0032.jpg";
+import heroImg4 from "@/assets/JAY_9772.jpg";
+import heroImg5 from "@/assets/JAY_9760.jpg";
+import heroImg7 from "@/assets/JAY_9788 (1).jpg";
+import heroImg8 from "@/assets/JAY_9916.jpg";
+import heroImg9 from "@/assets/JAY_9917.jpg";
+import heroImg10 from "@/assets/JAY_9997.jpg";
+import heroImg11 from "@/assets/JAY_9998.jpg";
 
 const points = [
-  "Stable electricity, fast WiFi and air conditioning",
-  "Hands-on training in coding, digital marketing & CCTV",
-  "Skill acquisition programs — including for children",
-  "Networking events that connect Nasarawa's tech community",
+  "Green Hub (Co-working space) with power & WiFi",
+  "IT Consultation for businesses and startups",
+  "Hardware & Software solutions for clients",
+  "IT Trainings & Career tracks in modern tech",
 ];
 
 const aboutImages = [
   {
-    src: coworking,
-    alt: "Inside Harley Innovation Hub coworking space",
+    src: heroImg1,
+    alt: "Harley Innovation Hub coworking space",
   },
   {
-    src: heroImg,
-    alt: "Vibrant workspace environment",
+    src: heroImg2,
+    alt: "Collaborative workspace at Harley Hub",
   },
   {
-    src: productSoftware,
-    alt: "Our software development team",
+    src: heroImg3,
+    alt: "Software development team in action",
   },
   {
-    src: productTraining,
-    alt: "Training session in progress",
+    src: heroImg4,
+    alt: "Digital skills training session",
+  },
+  {
+    src: heroImg5,
+    alt: "Harley Innovation Hub coworking space",
+  },
+  {
+    src: heroImg7,
+    alt: "Collaborative workspace at Harley Hub",
+  },
+  {
+    src: heroImg8,
+    alt: "Software development team in action",
+  },
+  {
+    src: heroImg9,
+    alt: "Digital skills training session",
+  },
+  {
+    src: heroImg10,
+    alt: "Harley Innovation Hub coworking space",
+  },
+  {
+    src: heroImg11,
+    alt: "Collaborative workspace at Harley Hub",
   },
 ];
 
-export const About = () => {
+export const About = ({ isHomePage = false }: { isHomePage?: boolean }) => {
   const plugin = React.useRef(
     Autoplay({ delay: 5000, stopOnInteraction: true })
   );
@@ -57,8 +88,7 @@ export const About = () => {
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
             Located opposite Eco Bank on Jos Road, Harley Innovation Hub is a prominent
             tech hub serving Nasarawa State. We bring together consulting, software,
-            training and coworking under one roof — equipping people and businesses
-            with the digital skills they need to thrive.
+            training and coworking under one roof.
           </p>
           <ul className="mt-8 space-y-3">
             {points.map((p) => (
@@ -70,10 +100,22 @@ export const About = () => {
               </li>
             ))}
           </ul>
-          <div className="mt-10 flex gap-3">
-            <Button variant="hero" size="lg" asChild><a href="#contact">Visit the hub</a></Button>
-            <Button variant="outline" size="lg" asChild><a href="#products">Our products</a></Button>
-          </div>
+          
+          {isHomePage ? (
+            <div className="mt-10">
+              <Link 
+                to="/about" 
+                className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all"
+              >
+                Read more about our story <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          ) : (
+            <div className="mt-10 flex gap-3">
+              <Button variant="hero" size="lg" asChild><Link to="/#contact">Visit the hub</Link></Button>
+              <Button variant="outline" size="lg" asChild><Link to="/products">Our products</Link></Button>
+            </div>
+          )}
         </div>
 
         <div className="relative px-4 sm:px-10 lg:px-0">

@@ -3,14 +3,25 @@ import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const cols = [
-  { title: "Services", links: ["Software Development", "IT Consulting", "Digital Marketing", "CCTV Installation"] },
-  { title: "Hub", links: ["Coworking Space", "Training", "Events", "Our Team"] },
+  { title: "Services", links: [
+    { label: "Green Hub (Coworking)", href: "/#features" },
+    { label: "IT Consultation", href: "/#features" },
+    { label: "Hardware & Software", href: "/#features" },
+    { label: "IT Trainings", href: "/#features" },
+    { label: "Kids Holiday Coding", href: "/#features" }
+  ]},
+  { title: "Hub", links: [
+    { label: "School Competition", href: "/#features" },
+    { label: "SIWES & NYSC", href: "/#features" },
+    { label: "Our Products", href: "/products" },
+    { label: "Tech Courses", href: "/courses" },
+    { label: "Our Team", href: "/team" }
+  ]},
   { title: "Company", links: [
-    { label: "About", href: "#about" },
-    { label: "Products", href: "#products" },
-    { label: "Testimonials", href: "#testimonials" },
-    { label: "Careers", href: "/careers", isRoute: true },
-    { label: "Contact", href: "#contact" }
+    { label: "About", href: "/about" },
+    { label: "Testimonials", href: "/testimonials" },
+    { label: "Careers", href: "/careers" },
+    { label: "Contact", href: "/#contact" }
   ]},
 ];
 
@@ -22,7 +33,7 @@ export const Footer = () => {
           <div className="md:col-span-2">
             <div className="flex items-center gap-3">
               <img src={logo} alt="Harley Innovation Hub logo" className="h-12 w-12" />
-              <span className="font-bold text-lg">Harley Innovation Hub</span>
+              <span className="font-bold text-lg text-foreground">Harley Innovation Hub</span>
             </div>
             <p className="mt-4 text-sm text-muted-foreground max-w-xs leading-relaxed">
               Lafia's home for technology, training and innovation.
@@ -56,15 +67,11 @@ export const Footer = () => {
               <h4 className="text-sm font-semibold mb-4">{c.title}</h4>
               <ul className="space-y-3">
                 {c.links.map((l) => (
-                  <li key={typeof l === 'string' ? l : l.label}>
-                    {typeof l === 'string' ? (
-                      <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{l}</a>
+                  <li key={l.label}>
+                    {l.href.startsWith("/") ? (
+                      <Link to={l.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">{l.label}</Link>
                     ) : (
-                      l.isRoute ? (
-                        <Link to={l.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">{l.label}</Link>
-                      ) : (
-                        <a href={l.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">{l.label}</a>
-                      )
+                      <a href={l.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">{l.label}</a>
                     )}
                   </li>
                 ))}

@@ -1,4 +1,5 @@
-import { Linkedin, Twitter, Github } from "lucide-react";
+import { Linkedin, Twitter, Github, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import t1 from "@/assets/team-real-2.jpg";
 import t2 from "@/assets/team-real-4.jpg";
 import t3 from "@/assets/team-real-1.jpg";
@@ -15,7 +16,9 @@ const team = [
   { img: t6, name: "Team Member", role: "Role" }, 
 ];
 
-export const Team = () => {
+export const Team = ({ isHomePage = false }: { isHomePage?: boolean }) => {
+  const displayTeam = isHomePage ? team.slice(0, 4) : team;
+
   return (
     <section id="team" className="py-24 md:py-32">
       <div className="container-tight">
@@ -30,9 +33,9 @@ export const Team = () => {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-          {team.map((m) => (
+          {displayTeam.map((m, index) => (
             <div
-              key={m.name}
+              key={index}
               className="group rounded-xl overflow-hidden bg-card border border-border hover:shadow-elegant transition-all duration-300"
             >
               <div className="aspect-square overflow-hidden">
@@ -63,6 +66,17 @@ export const Team = () => {
             </div>
           ))}
         </div>
+
+        {isHomePage && (
+          <div className="mt-12 text-center">
+            <Link 
+              to="/team" 
+              className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all"
+            >
+              Meet the whole team <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

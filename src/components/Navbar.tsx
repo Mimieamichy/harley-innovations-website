@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { 
   Home, 
   Briefcase, 
@@ -8,22 +9,53 @@ import {
   Phone, 
   Megaphone,
   Users,
-  ExternalLink
+  ExternalLink,
+  GraduationCap
 } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const links = [
-  { href: "#features", label: "Services", icon: Briefcase },
-  { href: "#products", label: "Products", icon: Package },
-  { href: "#about", label: "About", icon: Info },
-  { href: "#team", label: "Team", icon: Users },
-  { href: "#testimonials", label: "Reviews", icon: MessageSquare },
-  { href: "#contact", label: "Contact", icon: Phone },
+  { href: "/#features", label: "Services", icon: Briefcase },
+  { href: "/products", label: "Products", icon: Package },
+  { href: "/courses", label: "Courses", icon: GraduationCap },
+  { href: "/about", label: "About", icon: Info },
+  { href: "/team", label: "Team", icon: Users },
+  { href: "/testimonials", label: "Reviews", icon: MessageSquare },
+  { href: "/#contact", label: "Contact", icon: Phone },
 ];
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const bannerRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("/#")) {
+      const id = href.split("#")[1];
+      if (location.pathname === "/") {
+        e.preventDefault();
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    // Scroll to top or to hash on route change
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, location.hash]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -75,39 +107,45 @@ export const Navbar = () => {
 
       <header
         className={`fixed inset-x-0 z-50 transition-all duration-300 ${
-          scrolled
+          scrolled || location.pathname !== "/"
             ? "bg-background/80 backdrop-blur-md border-b border-border shadow-sm"
             : "bg-transparent"
         }`}
         style={{ top: 'var(--banner-height, 36px)' }}
       >
         <nav className="container-tight flex items-center justify-between h-14 md:h-16">
-          <a href="#top" className="flex items-center gap-1.5">
+          <Link to="/" className="flex items-center gap-1.5">
             <img src={logo} alt="Harley Innovation Hub logo" className="h-8 w-8 md:h-12 md:w-12 object-contain" />
-            <span className="font-bold text-base md:text-xl tracking-tight">Harley Innovation Hub</span>
-          </a>
+            <span className="font-bold text-base md:text-xl tracking-tight text-foreground">Harley Innovation Hub</span>
+          </Link>
 
           {/* Desktop Navigation */}
           <ul className="hidden md:flex items-center gap-8">
             {links.map((l) => (
               <li key={l.href}>
-                <a
-                  href={l.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                <Link
+                  to={l.href}
+                  onClick={(e) => handleNavClick(e, l.href)}
+                  className={`text-sm font-medium transition-colors ${
+                    location.pathname === l.href 
+                      ? "text-primary" 
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
                 >
                   {l.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
           
           <div className="md:hidden">
-            <a 
-              href="#contact" 
+            <Link 
+              to="/#contact" 
+              onClick={(e) => handleNavClick(e, "/#contact")}
               className="text-[10px] font-bold bg-primary text-primary-foreground px-3 py-1.5 rounded-full uppercase tracking-wider"
             >
               Contact
-            </a>
+            </Link>
           </div>
         </nav>
       </header>
@@ -116,17 +154,28 @@ export const Navbar = () => {
       <nav className="md:hidden fixed bottom-0 inset-x-0 bg-background/95 backdrop-blur-md border-t border-border z-50 pb-2">
         <ul className="flex items-center justify-around h-14">
           <li>
-            <a href="#top" className="flex flex-col items-center gap-1 px-2 text-muted-foreground hover:text-primary transition-colors">
+            <Link 
+              to="/" 
+              className={`flex flex-col items-center gap-1 px-2 transition-colors ${
+                location.pathname === "/" ? "text-primary" : "text-muted-foreground"
+              }`}
+            >
               <Home className="h-4 w-4" />
               <span className="text-[9px] font-bold uppercase tracking-tighter">Home</span>
-            </a>
+            </Link>
           </li>
-          {links.filter(l => ["Services", "Products", "Reviews", "About"].includes(l.label)).map((l) => (
+          {links.filter(l => ["Services", "Products", "Courses", "Reviews"].includes(l.label)).map((l) => (
             <li key={l.href}>
-              <a href={l.href} className="flex flex-col items-center gap-1 px-2 text-muted-foreground hover:text-primary transition-colors">
+              <Link 
+                to={l.href} 
+                onClick={(e) => handleNavClick(e, l.href)}
+                className={`flex flex-col items-center gap-1 px-2 transition-colors ${
+                  location.pathname === l.href ? "text-primary" : "text-muted-foreground"
+                }`}
+              >
                 <l.icon className="h-4 w-4" />
                 <span className="text-[9px] font-bold uppercase tracking-tighter">{l.label}</span>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

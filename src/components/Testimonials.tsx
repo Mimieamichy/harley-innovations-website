@@ -1,4 +1,5 @@
-import { Star } from "lucide-react";
+import { Star, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const items = [
   {
@@ -39,7 +40,9 @@ const items = [
   },
 ];
 
-export const Testimonials = () => {
+export const Testimonials = ({ isHomePage = false }: { isHomePage?: boolean }) => {
+  const displayItems = isHomePage ? items.slice(0, 3) : items;
+
   return (
     <section id="testimonials" className="py-24 md:py-32 bg-gradient-soft">
       <div className="container-tight">
@@ -56,7 +59,7 @@ export const Testimonials = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {items.map((t) => (
+          {displayItems.map((t) => (
             <figure
               key={t.name}
               className="p-8 rounded-xl bg-card border border-border hover:shadow-elegant transition-shadow flex flex-col"
@@ -84,6 +87,17 @@ export const Testimonials = () => {
             </figure>
           ))}
         </div>
+
+        {isHomePage && (
+          <div className="mt-12 text-center">
+            <Link 
+              to="/testimonials" 
+              className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all"
+            >
+              Read more reviews <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -1,29 +1,38 @@
-import { Code2, Megaphone, Network, GraduationCap, Building2, Lightbulb } from "lucide-react";
+import { 
+  Building2, 
+  Lightbulb, 
+  Cpu, 
+  GraduationCap, 
+  Baby, 
+  Trophy, 
+  Briefcase 
+} from "lucide-react";
 
 const features = [
-  { icon: Code2, title: "Software Development", desc: "Custom websites, web apps, and mobile solutions built for businesses across Nigeria." },
-  { icon: Lightbulb, title: "IT Consulting", desc: "Strategy, systems and infrastructure advice from a team that's shipped real products." },
-  { icon: GraduationCap, title: "Skills Training", desc: "Hands-on coding, digital marketing, networking and CCTV installation programs." },
-  { icon: Megaphone, title: "Digital Marketing", desc: "Grow your reach with social, SEO and paid campaigns crafted for African audiences." },
-  { icon: Network, title: "Networking & CCTV", desc: "Professional setup of computer networks and security camera systems." },
-  { icon: Building2, title: "Coworking Space", desc: "Stable power, fast WiFi and air conditioning — a place to focus and connect." },
+  { icon: Building2, title: "Green Hub", desc: "Our premium coworking space with stable power, fast WiFi and air conditioning — the perfect place to focus." },
+  { icon: Lightbulb, title: "IT Consultation", desc: "Expert strategy and infrastructure advice tailored for businesses and startups." },
+  { icon: Cpu, title: "Hardware & Software", desc: "Professional hardware solutions and custom software development for diverse clients." },
+  { icon: GraduationCap, title: "IT Trainings", desc: "Specialized training programs in modern tech stacks and digital literacy." },
+  { icon: Baby, title: "Kids Holiday Coding", desc: "Engaging coding and robotics programs designed specifically for children during holidays." },
+  { icon: Trophy, title: "Inter School Competition", desc: "Organizing the Lafia inter-school tech competition to foster innovation and talent." },
+  { icon: Briefcase, title: "SIWES & NYSC", desc: "Hands-on internship and service programs for students and graduates to gain real-world experience." },
 ];
 
 export const Features = () => {
   return (
-    <section id="features" className="py-24 md:py-32">
+    <section id="features" className="py-24 md:py-32 scroll-mt-20">
       <div className="container-tight">
         <div className="max-w-2xl mx-auto text-center mb-16">
-          <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">What we do</p>
+          <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">Our Services</p>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
             One hub. Every digital need.
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            From learning your first line of code to launching a national brand — we're here for it.
+            From our Green Hub coworking space to professional IT consultation, trainings, and community competitions.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {features.map((f) => (
             <div
               key={f.title}
