@@ -1,10 +1,17 @@
 import { Facebook, Twitter, Linkedin, MapPin, Phone, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const cols = [
   { title: "Services", links: ["Software Development", "IT Consulting", "Digital Marketing", "CCTV Installation"] },
   { title: "Hub", links: ["Coworking Space", "Training", "Events", "Our Team"] },
-  { title: "Company", links: ["About", "Products", "Testimonials", "Contact"] },
+  { title: "Company", links: [
+    { label: "About", href: "#about" },
+    { label: "Products", href: "#products" },
+    { label: "Testimonials", href: "#testimonials" },
+    { label: "Careers", href: "/careers", isRoute: true },
+    { label: "Contact", href: "#contact" }
+  ]},
 ];
 
 export const Footer = () => {
@@ -49,8 +56,16 @@ export const Footer = () => {
               <h4 className="text-sm font-semibold mb-4">{c.title}</h4>
               <ul className="space-y-3">
                 {c.links.map((l) => (
-                  <li key={l}>
-                    <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{l}</a>
+                  <li key={typeof l === 'string' ? l : l.label}>
+                    {typeof l === 'string' ? (
+                      <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{l}</a>
+                    ) : (
+                      l.isRoute ? (
+                        <Link to={l.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">{l.label}</Link>
+                      ) : (
+                        <a href={l.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">{l.label}</a>
+                      )
+                    )}
                   </li>
                 ))}
               </ul>
