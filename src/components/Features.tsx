@@ -5,7 +5,8 @@ import {
   GraduationCap, 
   Baby, 
   Trophy, 
-  Briefcase 
+  Briefcase,
+  
 } from "lucide-react";
 
 const features = [
@@ -15,7 +16,8 @@ const features = [
   { icon: GraduationCap, title: "IT Trainings", desc: "Specialized training programs in modern tech stacks and digital literacy." },
   { icon: Baby, title: "Kids Holiday Coding", desc: "Engaging coding and robotics programs designed specifically for children during holidays." },
   { icon: Trophy, title: "Inter School Competition", desc: "Organizing the Lafia inter-school tech competition to foster innovation and talent." },
-  { icon: Briefcase, title: "SIWES & NYSC", desc: "Hands-on internship and service programs for students and graduates to gain real-world experience." },
+  { icon: Briefcase, title: "SIWES", desc: "Hands-on internship programs for students and graduates to gain real-world experience." },
+  { icon: Lightbulb, title: "NYSC", desc: "Service placement for corp members to gain real-world experience." },
 ];
 
 export const Features = () => {

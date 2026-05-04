@@ -6,14 +6,18 @@ import t3 from "@/assets/team-real-1.jpg";
 import t4 from "@/assets/team-real-3.jpg";
 import t5 from "@/assets/team-real-5.jpg";
 import t6 from "@/assets/team-real-6.png";
+import t7 from "@/assets/team-real-7.jpeg";
+import t8 from "@/assets/team-real-8.jpeg";
 
 const team = [
-  { img: t2, name: "Team Member", role: "Role" },
-  { img: t1, name: "Team Member", role: "Role" },
-  { img: t3, name: "Team Member", role: "Role" },
-  { img: t4, name: "Team Member", role: "Role" },
-  { img: t5, name: "Team Member", role: "Role" },
-  { img: t6, name: "Team Member", role: "Role" }, 
+  { img: t2, name: "Asher Jocos", role: "CEO" },
+  { img: t3, name: "AmazingMercy Amaefule", role: "Hub Manager" },
+  { img: t1, name: "Isaiah Wole", role: "Lead Design" },
+  { img: t4, name: "Lawisah Ogabo", role: "Lead Digital Marketer" },
+  { img: t5, name: "Miracle Ezeh", role: "Lead Developer" },
+  { img: t6, name: "Joseph John", role: "Lead Data Science" }, 
+  { img: t7, name: "Blessed Nguveren", role: "Hub Secretary" }, 
+  { img: t8, name: "Abigail Abeson", role: "Lead Operation" }, 
 ];
 
 export const Team = ({ isHomePage = false }: { isHomePage?: boolean }) => {

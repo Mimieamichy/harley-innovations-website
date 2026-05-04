@@ -20,9 +20,7 @@ import heroImg8 from "@/assets/JAY_9916.jpg";
 import heroImg9 from "@/assets/JAY_9917.jpg";
 import heroImg10 from "@/assets/JAY_9997.jpg";
 import heroImg11 from "@/assets/JAY_9998.jpg";
-import productCoworking from "@/assets/product-coworking.jpg";
-import productSoftware from "@/assets/product-software.jpg";
-import productTraining from "@/assets/product-training.jpg";
+import heroImg12 from "@/assets/it-training.jpeg";
 
 const carouselImages = [
   {
@@ -65,6 +63,11 @@ const carouselImages = [
     src: heroImg11,
     alt: "Collaborative workspace at Harley Hub",
   },
+  {
+    src: heroImg12,
+    alt: "Collaborative workspace at Harley Hub",
+  },
+ 
   
 ];
 
