@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
-import emailjs from "@emailjs/browser";
 
 export const CTA = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -28,22 +27,33 @@ export const CTA = () => {
     setIsSubmitting(true);
 
     try {
-      // NOTE: Replace these with your actual EmailJS IDs from your dashboard
-      // const SERVICE_ID = "YOUR_SERVICE_ID";
-      // const TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-      // const PUBLIC_KEY = "YOUR_PUBLIC_KEY";
-
-      // For now, we simulate the success but you should uncomment the logic below
-      // await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current!, PUBLIC_KEY);
-
-      await new Promise(resolve => setTimeout(resolve, 1500)); // Simulated delay
-
-      toast({ 
-        title: "Message sent!", 
-        description: "Thank you for reaching out. We'll get back to you shortly." 
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "66153fc0-2e38-4553-968b-80bfc41a9216",
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          subject: `New Contact Form Submission from ${form.name}`,
+          from_name: "Harley Innovations Website",
+        }),
       });
-      
-      setForm({ name: "", email: "", message: "" });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast({ 
+          title: "Message sent!", 
+          description: "Thank you for reaching out. We'll get back to you shortly." 
+        });
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        throw new Error(result.message || "Something went wrong");
+      }
     } catch (error) {
       console.error("FAILED...", error);
       toast({ 
